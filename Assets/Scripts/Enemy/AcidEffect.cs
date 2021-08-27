@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AcidEffect : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _rotate;
+    [SerializeField] private float _speed = 0;
+    [SerializeField] private float _rotate = 0;
     [SerializeField] private float _destroy = 3f;
 
 
@@ -26,7 +26,7 @@ public class AcidEffect : MonoBehaviour
 
             if (hit != null)
             {
-                hit.Damage();
+                hit.Damage(1);
             }
         }
     }

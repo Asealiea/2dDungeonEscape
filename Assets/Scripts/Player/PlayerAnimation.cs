@@ -77,4 +77,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         _anim.SetBool("IsDead",true);
     }
+
+    public void FireSword()
+    {
+        _anim.SetBool("HasFlameSword", true);
+    }
 }

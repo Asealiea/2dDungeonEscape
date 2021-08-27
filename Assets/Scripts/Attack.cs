@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private bool _canDamage = true;
+    public bool hasFireSword;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,7 +16,10 @@ public class Attack : MonoBehaviour
         {
             if (_canDamage)
             {
-                obj.Damage();
+                if (!hasFireSword)
+                    obj.Damage(1);                
+                else
+                    obj.Damage(3);                
                 _canDamage = false;
                 StartCoroutine(DamageCoolDown());
             }

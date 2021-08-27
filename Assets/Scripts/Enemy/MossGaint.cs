@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MossGaint : Enemy, IDamageable
+public class MossGaint : Enemy//, IDamageable
 {
-    public int Health { get; set; }
+   // public int Health { get; set; }
   
 
 
@@ -15,19 +15,20 @@ public class MossGaint : Enemy, IDamageable
         Health = base.health;
     }
 
-
-    public void Damage()
+    /*
+    public void Damage(int damage)
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             return;
         }
-        Health--;
+        Health-= damage;
         anim.SetTrigger("Hit");
         isHit = true;
         anim.SetBool("InCombat", true);
         if (Health < 1)
         {
+            isDead = true;
             Health = 0;
             anim.SetTrigger("Death");
             GameObject Dia = Instantiate(_diamonds, transform.position, Quaternion.identity);
@@ -36,7 +37,7 @@ public class MossGaint : Enemy, IDamageable
         }
     }
 
-
+    */
 
 
 

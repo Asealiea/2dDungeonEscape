@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spider : Enemy, IDamageable
+public class Spider : Enemy//, IDamageable
 {
     [SerializeField] private GameObject _acid;
 
-    public int Health { get; set; }
+   // public int Health { get; set; }
 
 
     //use this for initialization
@@ -16,18 +16,19 @@ public class Spider : Enemy, IDamageable
         Health = base.health;
         if (_acid == null) Debug.LogError(transform.name + ":: No acid PreFab attached");
     }
-
-    public void Damage()
+    /*
+    public void Damage(int damage)
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             return;
         }
-        Health--;
+        Health-= damage;
 
 
         if (Health < 1)
         {
+            isDead = true;
             Health = 0;
             anim.SetTrigger("Death");
             GameObject Dia = Instantiate(_diamonds, transform.position, Quaternion.identity);
@@ -35,6 +36,26 @@ public class Spider : Enemy, IDamageable
             Destroy(this.gameObject, 3);
         }
 
+    }
+    */
+    public override void Damage(int damage)
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            return;
+        }
+        Health -= damage;
+
+
+        if (Health < 1)
+        {
+            isDead = true;
+            Health = 0;
+            anim.SetTrigger("Death");
+            GameObject Dia = Instantiate(_diamonds, transform.position, Quaternion.identity);
+            Dia.GetComponent<Diamond>().SpawnDiamonds(gems);
+            Destroy(this.gameObject, 3);
+        }
     }
     public override void Movement()
     {

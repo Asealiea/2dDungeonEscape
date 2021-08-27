@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour , IDamageable
 {
-    [SerializeField] private Rigidbody2D _rigBody;
     [SerializeField] private int _diamonds;
+
+
+
+    [SerializeField] private Rigidbody2D _rigBody;
     [SerializeField] private float _speed = 3;
-    [SerializeField] private int _health;
+    [SerializeField] private int _health = 10;
     private bool _isDead = false;
     [SerializeField] private float _jump = 5;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private BoxCollider2D _box2D;
     private PlayerAnimation _playerAnim;
+    private bool _inShop = false;
+    [SerializeField] private bool _flameSword;
+
 
     public int Health { get; set; }
    
@@ -35,7 +41,7 @@ public class Player : MonoBehaviour , IDamageable
     {
         Movement();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !_inShop)
         {
             _playerAnim.Attack();
         }
@@ -72,32 +78,58 @@ public class Player : MonoBehaviour , IDamageable
         return ground = rchit.collider == null ? false : true;
     }
 
-    public void Damage()
-    {
-     
-
+    public void Damage(int damage)
+    {     
         _playerAnim.PlayerDamage();
         
-        Health--;
-    
+        Health--;    
         if (Health < 1)
         {
             _playerAnim.PlayerDeath();
             Health = 0;
             _isDead = true;
-        }
-    
+        }    
     }
 
 
     public void UpdateDiamonds(int ExtraDiamonds)
     {
         _diamonds += ExtraDiamonds;
-        Debug.Log(ExtraDiamonds + "Extra");
-        Debug.Log(_diamonds);
+        Debug.Log("picked up " + ExtraDiamonds + " diamond");
     }
 
-   
+    public int DiamondsOnHand()
+    {
+        return _diamonds;
+    }
+
+    public void Shop()
+    {
+        _inShop = !_inShop;
+    }
+
+    public void ShopPurchance( int Dia, int itemID)
+    {
+        _diamonds -= Dia;
+
+        switch (itemID)
+        {
+            case 0:
+                _playerAnim.FireSword();
+                break;
+            case 1:
+                _jump *= 1.5f;
+                break;
+            case 2:
+                GameManager.Instance.hasKeyToCastle = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
 
 
 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] protected GameObject _diamonds;
     //protected means that only things that inherate from enemy can change the value, like private on it's own script.
+    [SerializeField] protected GameObject _diamonds;
     [SerializeField] protected int gems;
     [SerializeField] protected int health;
     [SerializeField] protected int speed;
@@ -13,10 +13,11 @@ public abstract class Enemy : MonoBehaviour
     protected Animator anim;
     protected SpriteRenderer sprite;
     protected Vector3 currentTarget;
+    protected bool isDead= false;
 
     protected bool isHit;
     protected Player player;
-
+    public int Health { get; set; }
     public virtual void Init()
     {
         anim = GetComponentInChildren<Animator>();
@@ -51,7 +52,10 @@ public abstract class Enemy : MonoBehaviour
         {
             return;
         }
-        Movement();
+        if (!isDead)
+        {
+            Movement();
+        }
     }
 
     public virtual void Movement()
@@ -125,5 +129,23 @@ public abstract class Enemy : MonoBehaviour
 
     }
     
-
+    public virtual void Damage(int damage)
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+            return;
+        Debug.Log("you hit " + transform.name);
+        Health -= damage;
+        anim.SetTrigger("Hit");
+        isHit = true;
+        anim.SetBool("InCombat", true);
+        if (Health < 1)
+        {
+            isDead = true;
+            Health = 0;
+            anim.SetTrigger("Death");
+            GameObject Dia = Instantiate(_diamonds, transform.position, Quaternion.identity);
+            Dia.GetComponent<Diamond>().SpawnDiamonds(gems); //private variable  and using a method to change the gems.
+            Destroy(this.gameObject, 2.5f);
+        }
+    }
 }
