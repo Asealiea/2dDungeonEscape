@@ -16,17 +16,17 @@ public class PlayerAnimation : MonoBehaviour
     void Start()
     {
         _anim = GetComponentInChildren<Animator>();
-        if (_anim == null )
-            Debug.LogError("PlayerAnimation:child: Animator is null");
+        if (_anim == null ) Debug.LogError("PlayerAnimation:child: Animator is null");
+
         _sprite = GetComponentInChildren<SpriteRenderer>();
-        if (_sprite == null)
-            Debug.LogError("PlayerAnimation:child: Sprite is null");
+        if (_sprite == null) Debug.LogError("PlayerAnimation:child: Sprite is null");
+
         _swordArk = transform.GetChild(1).GetComponent<Animator>();
-        if (_swordArk == null)
-            Debug.LogError("PlayerAnimation::Sword_arc or Animator is null");
+        if (_swordArk == null) Debug.LogError("PlayerAnimation::Sword_arc or Animator is null");
+
         _swordSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
-        if (_swordSprite == null)
-            Debug.LogError("PlayerAnimation::Sword Sprite is null");        
+        if (_swordSprite == null) Debug.LogError("PlayerAnimation::Sword Sprite is null");
+
     }
 
     // Update is called once per frame
@@ -66,6 +66,15 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayerDamage()
     {
-        _anim.SetTrigger("Death");
+        if (_anim.GetBool("IsDead"))
+        {
+            return;
+        }
+        _anim.SetTrigger("Hit");               
+    }
+
+    public void PlayerDeath()
+    {
+        _anim.SetBool("IsDead",true);
     }
 }

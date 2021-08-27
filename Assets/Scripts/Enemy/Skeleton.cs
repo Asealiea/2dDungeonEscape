@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Skeleton : Enemy , IDamageable
 {
+   
+
     public int Health { get; set; }
 
     //use this for initialization
@@ -28,11 +30,11 @@ public class Skeleton : Enemy , IDamageable
         {
             Health = 0;
             anim.SetTrigger("Death");
-            Destroy(this.gameObject,2);
+            GameObject Dia =  Instantiate(_diamonds, transform.position, Quaternion.identity);
+            Dia.GetComponent<Diamond>().SpawnDiamonds(gems);
+            Destroy(this.gameObject,2.5f);
         }
-        // take 1 away from health
-        //if health less then 1 
-        //destroy object
+
 
     }
 

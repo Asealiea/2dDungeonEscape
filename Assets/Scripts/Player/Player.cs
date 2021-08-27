@@ -5,19 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour , IDamageable
 {
     [SerializeField] private Rigidbody2D _rigBody;
+    [SerializeField] private int _diamonds;
     [SerializeField] private float _speed = 3;
-    // [SerializeField] private Vector2 _velocity;
-    // [SerializeField] private Vector2 _direction;
+    [SerializeField] private int _health;
+    private bool _isDead = false;
     [SerializeField] private float _jump = 5;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private BoxCollider2D _box2D;
     private PlayerAnimation _playerAnim;
 
-
     public int Health { get; set; }
-
-
-
    
     void Start()
     {
@@ -29,7 +26,8 @@ public class Player : MonoBehaviour , IDamageable
 
         _playerAnim = GetComponentInChildren<PlayerAnimation>();
         if (_playerAnim == null) Debug.LogError("Player:: Player Animation is null");
-        
+
+        Health = _health;
     }
 
     
@@ -46,16 +44,20 @@ public class Player : MonoBehaviour , IDamageable
 //#if UNITY_EDITOR_WIN
     private void Movement()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
+        if (!_isDead)
         {
-            _rigBody.velocity = new Vector2(h * _speed, _jump);
-            //_anim.SetBool("Jump", true);
-            _playerAnim.Jump();
+
+            float h = Input.GetAxisRaw("Horizontal");
+
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
+            {
+                _rigBody.velocity = new Vector2(h * _speed, _jump);
+                //_anim.SetBool("Jump", true);
+                _playerAnim.Jump();
+            }
+            _playerAnim.Move(h);
+            _rigBody.velocity = new Vector2(h * _speed, _rigBody.velocity.y);
         }
-        _playerAnim.Move(h);
-        _rigBody.velocity = new Vector2(h * _speed, _rigBody.velocity.y);
 
     }
 //#endif
@@ -72,7 +74,27 @@ public class Player : MonoBehaviour , IDamageable
 
     public void Damage()
     {
+     
+
         _playerAnim.PlayerDamage();
+        
+        Health--;
+    
+        if (Health < 1)
+        {
+            _playerAnim.PlayerDeath();
+            Health = 0;
+            _isDead = true;
+        }
+    
+    }
+
+
+    public void UpdateDiamonds(int ExtraDiamonds)
+    {
+        _diamonds += ExtraDiamonds;
+        Debug.Log(ExtraDiamonds + "Extra");
+        Debug.Log(_diamonds);
     }
 
    

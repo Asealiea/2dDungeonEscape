@@ -135,7 +135,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -159,7 +159,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -171,7 +171,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
@@ -183,7 +183,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -195,7 +195,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -203,10 +203,10 @@ TextureImporter:
       name: Diamond_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 1792
-        width: 116
-        height: 116
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97fec55a6e144cf479049be63ece1596
+      spriteID: b11f9bb038477cb4c80b58eb7689d00d
       internalID: 21300000
       vertices: []
       indices: 
@@ -224,10 +224,10 @@ TextureImporter:
       name: Diamond_1
       rect:
         serializedVersion: 2
-        x: 132
+        x: 128
         y: 1792
-        width: 116
-        height: 116
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25723c7ad283c894faa7a9db90ed6d16
+      spriteID: b141444485616a147ac04b3293731bb8
       internalID: 21300002
       vertices: []
       indices: 
@@ -245,10 +245,10 @@ TextureImporter:
       name: Diamond_2
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 1664
-        width: 116
-        height: 116
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,7 +256,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33f2f4aa9f3650446ac1c0bacc0db8c3
+      spriteID: b9b802ec8c140f24abcdbfeb1c85f6e1
       internalID: 21300004
       vertices: []
       indices: 
@@ -266,10 +266,10 @@ TextureImporter:
       name: Diamond_3
       rect:
         serializedVersion: 2
-        x: 132
+        x: 128
         y: 1664
-        width: 116
-        height: 116
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,7 +277,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f36792656674fb4a9f4321bd9f23dbb
+      spriteID: 4c97d6e909a0a554fa06cedf71557433
       internalID: 21300006
       vertices: []
       indices: 
@@ -287,10 +287,10 @@ TextureImporter:
       name: Diamond_4
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 1536
-        width: 116
-        height: 116
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,7 +298,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a5293763bba1f645810e46a6d65ba86
+      spriteID: 18366e6e9b5e5e14f986cf37bf306ad3
       internalID: 21300008
       vertices: []
       indices: 
@@ -308,10 +308,10 @@ TextureImporter:
       name: Diamond_5
       rect:
         serializedVersion: 2
-        x: 132
+        x: 128
         y: 1536
-        width: 116
-        height: 116
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,7 +319,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 430c58b75bb920c41a3b1ce6c32e7f42
+      spriteID: 115c3393c8fa10146a452abb07af60cd
       internalID: 21300010
       vertices: []
       indices: 
@@ -329,10 +329,10 @@ TextureImporter:
       name: Diamond_6
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 1408
-        width: 120
-        height: 116
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,7 +340,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fff5fd8fd96ca7e47aa13ce8b257c0d7
+      spriteID: fd5c15baebbc071478d1ca89bfea1931
       internalID: 21300012
       vertices: []
       indices: 
@@ -350,10 +350,10 @@ TextureImporter:
       name: Diamond_7
       rect:
         serializedVersion: 2
-        x: 132
-        y: 1412
-        width: 120
-        height: 112
+        x: 128
+        y: 1408
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,7 +361,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ba005c953b7a0f41a0411529e64e229
+      spriteID: a52f2d9085b4db547b5536200eb95929
       internalID: 21300014
       vertices: []
       indices: 
@@ -371,10 +371,10 @@ TextureImporter:
       name: Diamond_8
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1288
-        width: 120
-        height: 104
+        x: 0
+        y: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,7 +382,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6433f0a0cce921a4abe9d4497ce64366
+      spriteID: c0b2fda1de18921439e41fbc05d1767d
       internalID: 21300016
       vertices: []
       indices: 
@@ -392,10 +392,10 @@ TextureImporter:
       name: Diamond_9
       rect:
         serializedVersion: 2
-        x: 136
-        y: 1288
-        width: 116
-        height: 104
+        x: 128
+        y: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,7 +403,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cecbe4c15aecc6c49aa5531e0780aa2d
+      spriteID: 418df337776d89a4c9df1341468ce2f6
       internalID: 21300018
       vertices: []
       indices: 
@@ -413,10 +413,10 @@ TextureImporter:
       name: Diamond_10
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1160
-        width: 120
-        height: 104
+        x: 0
+        y: 1152
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -424,7 +424,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74a2fa00dab2d754688efaa804a51e45
+      spriteID: 88ac2d98ef3b31247bb175a902824876
       internalID: 21300020
       vertices: []
       indices: 
@@ -434,10 +434,10 @@ TextureImporter:
       name: Diamond_11
       rect:
         serializedVersion: 2
-        x: 136
-        y: 1160
-        width: 116
-        height: 104
+        x: 128
+        y: 1152
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,7 +445,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a36b07c4c363b248a3e106686bd034b
+      spriteID: 1c4f4e4acebc8e442836ee3faa3c424a
       internalID: 21300022
       vertices: []
       indices: 
@@ -455,10 +455,10 @@ TextureImporter:
       name: Diamond_12
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1032
-        width: 120
-        height: 104
+        x: 0
+        y: 1024
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,7 +466,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e35c75ce9fd5f00459354d4a72973e55
+      spriteID: 066aa3e953ebba44abe4ebce4406e625
       internalID: 21300024
       vertices: []
       indices: 
@@ -476,10 +476,10 @@ TextureImporter:
       name: Diamond_13
       rect:
         serializedVersion: 2
-        x: 132
-        y: 1032
-        width: 120
-        height: 104
+        x: 128
+        y: 1024
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -487,7 +487,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81281b21f2256534bafde975321e4c02
+      spriteID: d11eb9c46c7e96a478d22d175e87d828
       internalID: 21300026
       vertices: []
       indices: 
@@ -497,10 +497,10 @@ TextureImporter:
       name: Diamond_14
       rect:
         serializedVersion: 2
-        x: 4
-        y: 904
-        width: 120
-        height: 104
+        x: 0
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -508,7 +508,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5619e5eb0a3c2b4eb13633d111cbdca
+      spriteID: 22be6da910709ce4fb614d4a51b239ae
       internalID: 21300028
       vertices: []
       indices: 
@@ -518,10 +518,10 @@ TextureImporter:
       name: Diamond_15
       rect:
         serializedVersion: 2
-        x: 132
-        y: 904
-        width: 120
-        height: 104
+        x: 128
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,7 +529,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cb9bc9c207d0624786eb1713c0a0673
+      spriteID: 836157d79b74bf94995cab646203a132
       internalID: 21300030
       vertices: []
       indices: 
@@ -539,10 +539,10 @@ TextureImporter:
       name: Diamond_16
       rect:
         serializedVersion: 2
-        x: 4
-        y: 772
-        width: 120
-        height: 108
+        x: 0
+        y: 768
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -550,7 +550,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f0b2786aaa03474a92866388752fc4b
+      spriteID: 234e33f9f03aa9f429e5d823c910ba07
       internalID: 21300032
       vertices: []
       indices: 
@@ -560,10 +560,10 @@ TextureImporter:
       name: Diamond_17
       rect:
         serializedVersion: 2
-        x: 132
-        y: 772
-        width: 120
-        height: 108
+        x: 128
+        y: 768
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -571,7 +571,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d09f6906f5cb8664a88ace7507f686de
+      spriteID: 9cb0703a1e4eef440a52534bbc9174c6
       internalID: 21300034
       vertices: []
       indices: 
@@ -581,10 +581,10 @@ TextureImporter:
       name: Diamond_18
       rect:
         serializedVersion: 2
-        x: 4
-        y: 644
-        width: 120
-        height: 108
+        x: 0
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -592,7 +592,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef0ffd12f4534f54eab9c56473ad8676
+      spriteID: 6d50238d74609a84d84875345409907c
       internalID: 21300036
       vertices: []
       indices: 
@@ -602,10 +602,10 @@ TextureImporter:
       name: Diamond_19
       rect:
         serializedVersion: 2
-        x: 132
-        y: 644
-        width: 120
-        height: 108
+        x: 128
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -613,7 +613,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f888ee84d89dee546a259106c6039fd6
+      spriteID: ed7a2ad06c320cb4b99286d792c7d8a1
       internalID: 21300038
       vertices: []
       indices: 
@@ -623,10 +623,10 @@ TextureImporter:
       name: Diamond_20
       rect:
         serializedVersion: 2
-        x: 4
-        y: 520
-        width: 120
-        height: 104
+        x: 0
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -634,7 +634,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04427e72e69ad6c4caf3774522b9a347
+      spriteID: 1af93d2ecc5a3f940a9b1e2eaa7759db
       internalID: 21300040
       vertices: []
       indices: 
@@ -644,10 +644,10 @@ TextureImporter:
       name: Diamond_21
       rect:
         serializedVersion: 2
-        x: 132
-        y: 524
-        width: 120
-        height: 100
+        x: 128
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -655,7 +655,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9703ef37af5f73418ec72c0ec396c1a
+      spriteID: 13afc8ccd7f34704cb2ab353684c48b8
       internalID: 21300042
       vertices: []
       indices: 
@@ -665,10 +665,10 @@ TextureImporter:
       name: Diamond_22
       rect:
         serializedVersion: 2
-        x: 4
-        y: 396
-        width: 124
-        height: 100
+        x: 0
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -676,7 +676,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd54e1bbb61dbdf4887f7699a898850e
+      spriteID: bac99e13965409a489415b284d0208db
       internalID: 21300044
       vertices: []
       indices: 
@@ -686,10 +686,10 @@ TextureImporter:
       name: Diamond_23
       rect:
         serializedVersion: 2
-        x: 132
-        y: 396
-        width: 124
-        height: 104
+        x: 128
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -697,7 +697,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 460f27e13aebdd24fa7cc55885428ecc
+      spriteID: 0c630c08e9776a94d8b4bd5869645d79
       internalID: 21300046
       vertices: []
       indices: 
@@ -707,10 +707,10 @@ TextureImporter:
       name: Diamond_24
       rect:
         serializedVersion: 2
-        x: 4
-        y: 264
-        width: 124
-        height: 108
+        x: 0
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -718,7 +718,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0e93b07666ad3245ba9645ff4e8a156
+      spriteID: 3ec3a5ae01facf44baf85ce64e381340
       internalID: 21300048
       vertices: []
       indices: 
@@ -728,10 +728,10 @@ TextureImporter:
       name: Diamond_25
       rect:
         serializedVersion: 2
-        x: 132
-        y: 260
-        width: 120
-        height: 108
+        x: 128
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -739,7 +739,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c89ef30bbd48194886ef2912316ae84
+      spriteID: af5d929ec13ff354a9ed5645e3970bce
       internalID: 21300050
       vertices: []
       indices: 
@@ -749,10 +749,10 @@ TextureImporter:
       name: Diamond_26
       rect:
         serializedVersion: 2
-        x: 8
-        y: 132
-        width: 116
-        height: 108
+        x: 0
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -760,7 +760,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8635067571e8c6441866f52a07b47f90
+      spriteID: df91e96f6ec8ef346a374e140b1691a1
       internalID: 21300052
       vertices: []
       indices: 
@@ -770,10 +770,10 @@ TextureImporter:
       name: Diamond_27
       rect:
         serializedVersion: 2
-        x: 136
-        y: 132
-        width: 116
-        height: 108
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -781,7 +781,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff763f3c5da7b334b994626797f15ddc
+      spriteID: 7206406dbfaf02a4ab45e366b0eaef53
       internalID: 21300054
       vertices: []
       indices: 
@@ -791,10 +791,10 @@ TextureImporter:
       name: Diamond_28
       rect:
         serializedVersion: 2
-        x: 8
-        y: 4
-        width: 112
-        height: 112
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -802,7 +802,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78b6d4aa6b7aabf43a8e4d6a8dcfbdae
+      spriteID: 0027170087fe5174b8f2f1939a5f6b11
       internalID: 21300056
       vertices: []
       indices: 
@@ -812,10 +812,10 @@ TextureImporter:
       name: Diamond_29
       rect:
         serializedVersion: 2
-        x: 132
-        y: 4
-        width: 116
-        height: 112
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -823,7 +823,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 509edfc43ea6cee4b8472ca5a9f94a81
+      spriteID: e60ad33a9ca25104da7b48c5f569d595
       internalID: 21300058
       vertices: []
       indices: 
