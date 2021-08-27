@@ -12,6 +12,10 @@ public class PlayerAnimation : MonoBehaviour
     private Animator _swordArk;
     private SpriteRenderer _swordSprite;
 
+    private bool _jumpFlipX;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,7 @@ public class PlayerAnimation : MonoBehaviour
         _swordSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         if (_swordSprite == null) Debug.LogError("PlayerAnimation::Sword Sprite is null");
 
+
     }
 
     // Update is called once per frame
@@ -34,7 +39,8 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (_direction != 0)
         {
-            _swordSprite.flipY = _direction > 0 ? false : true;
+            _swordSprite.flipY = _direction > 0 ? false : true;     
+            _jumpFlipX = _direction > 0 ? false : true;
         }
     }
 
@@ -61,7 +67,20 @@ public class PlayerAnimation : MonoBehaviour
     public void AttackEffect()
     {
 
+        _swordSprite.transform.rotation = Quaternion.Euler(new Vector3(75.26f, 67.1f, -53.4f));
         _swordArk.SetTrigger("AttackArc");
+        _swordSprite.flipX = false;
+    }
+
+    public void JumpAttackEffect()
+    {
+     
+        
+        _swordArk.SetTrigger("JumpAttackArc");
+        _swordSprite.transform.rotation = Quaternion.Euler( new Vector3(75.26f, -67.1f,-53.4f));
+        _swordSprite.flipY = true;
+        _swordSprite.flipX = _jumpFlipX;
+       // _swordSprite.flipX = true;
     }
 
     public void PlayerDamage()
