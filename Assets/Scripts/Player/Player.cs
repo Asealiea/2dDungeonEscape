@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour , IDamageable
 {
@@ -17,7 +18,6 @@ public class Player : MonoBehaviour , IDamageable
     [SerializeField] private BoxCollider2D _box2D;
     private PlayerAnimation _playerAnim;
     private bool _inShop = false;
-    [SerializeField] private bool _flameSword;
 
 
     public int Health { get; set; }
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour , IDamageable
         if (_playerAnim == null) Debug.LogError("Player:: Player Animation is null");
 
         Health = _health;
+        UIManager.Instance.UpdateLives(Health);
     }
 
     
@@ -41,10 +42,13 @@ public class Player : MonoBehaviour , IDamageable
     {
         Movement();
 
-        if (Input.GetMouseButtonDown(0) && !_inShop)
-        {
-            _playerAnim.Attack();
+       // if (Input.GetMouseButtonDown(0) && !_inShop && !_playerAnim.FinishedAttack())
+//        if ((CrossPlatformInputManager.GetButtonDown("A_Button") || Input.GetMouseButtonDown(0)) && !_inShop && !_playerAnim.FinishedAttack())
+        if (CrossPlatformInputManager.GetButtonDown("A_Button") && !_inShop && !_playerAnim.FinishedAttack())
+        { 
+                _playerAnim.Attack();
         }
+        
     }
 
 //#if UNITY_EDITOR_WIN
@@ -53,9 +57,10 @@ public class Player : MonoBehaviour , IDamageable
         if (!_isDead)
         {
 
-            float h = Input.GetAxisRaw("Horizontal");
+            float h = CrossPlatformInputManager.GetAxis("Horizontal"); // Input.GetAxisRaw("Horizontal");
 
-            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
+          //  if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
+            if ((CrossPlatformInputManager.GetButtonDown("B_Button") || Input.GetKeyDown(KeyCode.Space)) && IsGrounded())                               
             {
                 _rigBody.velocity = new Vector2(h * _speed, _jump);
                 //_anim.SetBool("Jump", true);
@@ -82,20 +87,23 @@ public class Player : MonoBehaviour , IDamageable
     {     
         _playerAnim.PlayerDamage();
         
-        Health--;    
+        Health--;   
+        
         if (Health < 1)
         {
             _playerAnim.PlayerDeath();
             Health = 0;
             _isDead = true;
-        }    
+        }
+        UIManager.Instance.UpdateLives(Health);
     }
 
 
     public void UpdateDiamonds(int ExtraDiamonds)
     {
         _diamonds += ExtraDiamonds;
-        Debug.Log("picked up " + ExtraDiamonds + " diamond");
+        UIManager.Instance.UpdateGemUI(_diamonds);
+        //Debug.Log("picked up " + ExtraDiamonds + " diamond");
     }
 
     public int DiamondsOnHand()
