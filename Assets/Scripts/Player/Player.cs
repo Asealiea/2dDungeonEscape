@@ -35,9 +35,10 @@ public class Player : MonoBehaviour , IDamageable
 
         Health = _health;
         UIManager.Instance.UpdateLives(Health);
+        
     }
 
-    
+
     void Update()
     {
         Movement();
@@ -47,31 +48,31 @@ public class Player : MonoBehaviour , IDamageable
         if (CrossPlatformInputManager.GetButtonDown("A_Button") && !_inShop && !_playerAnim.FinishedAttack())
         { 
                 _playerAnim.Attack();
-        }
+        } 
         
-    }
+        
+    } 
 
-//#if UNITY_EDITOR_WIN
+
     private void Movement()
     {
         if (!_isDead)
         {
+            float h = Input.GetAxisRaw("Horizontal");
+            float h2 = CrossPlatformInputManager.GetAxis("Horizontal"); // Input.GetAxisRaw("Horizontal");
 
-            float h = CrossPlatformInputManager.GetAxis("Horizontal"); // Input.GetAxisRaw("Horizontal");
-
-          //  if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
-            if ((CrossPlatformInputManager.GetButtonDown("B_Button") || Input.GetKeyDown(KeyCode.Space)) && IsGrounded())                               
+            //  if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
+            if ((CrossPlatformInputManager.GetButtonDown("B_Button") || Input.GetKeyDown(KeyCode.Space)) && IsGrounded())
             {
-                _rigBody.velocity = new Vector2(h * _speed, _jump);
-                //_anim.SetBool("Jump", true);
+                _rigBody.velocity = new Vector2((h+h2) * _speed, _jump);
                 _playerAnim.Jump();
             }
-            _playerAnim.Move(h);
-            _rigBody.velocity = new Vector2(h * _speed, _rigBody.velocity.y);
+            _playerAnim.Move(h+ h2);
+            _rigBody.velocity = new Vector2((h + h2) * _speed, _rigBody.velocity.y);
         }
-
     }
-//#endif
+
+
 
     private bool IsGrounded()
     {

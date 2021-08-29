@@ -25,4 +25,5 @@ public class GameManager : MonoBehaviour
 
     public bool hasKeyToCastle { get; set; }
 
+
 }
