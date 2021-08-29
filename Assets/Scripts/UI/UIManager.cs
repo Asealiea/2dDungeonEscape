@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _selectionImage;
     [SerializeField] private Text _gemCountUIText;
     [SerializeField] private GameObject _1health, _2health, _3health, _4health;
+    [SerializeField] private CanvasGroup _resumeButton, _pauseButton;
+
 
 
 
@@ -41,6 +43,24 @@ public class UIManager : MonoBehaviour
         if (_selectionImage == null) Debug.LogError(transform.name + ":: Selection Image is null");
         if (_gemCountUIText == null) Debug.LogError(transform.name + ":: Gem UI Text is null");
 
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        _pauseButton.alpha = 0;
+        _resumeButton.alpha = 1;
+        _pauseButton.blocksRaycasts = false;
+        Debug.Log("pause called");
+       
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        _pauseButton.alpha = 1;
+        _resumeButton.alpha = 0;
+        _pauseButton.blocksRaycasts = true;
+        Debug.Log("reume called");
     }
 
 

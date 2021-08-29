@@ -48,7 +48,15 @@ public class Player : MonoBehaviour , IDamageable
         if (CrossPlatformInputManager.GetButtonDown("A_Button") && !_inShop && !_playerAnim.FinishedAttack())
         { 
                 _playerAnim.Attack();
-        } 
+        }
+        if (CrossPlatformInputManager.GetButtonDown("Pause_Button"))
+        {
+            UIManager.Instance.PauseGame();
+        }
+        if (CrossPlatformInputManager.GetButtonDown("Resume_Button"))
+        {
+            UIManager.Instance.ResumeGame();
+        }
         
         
     } 
