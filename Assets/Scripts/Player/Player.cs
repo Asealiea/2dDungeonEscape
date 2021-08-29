@@ -104,6 +104,7 @@ public class Player : MonoBehaviour , IDamageable
     {
         _diamonds += ExtraDiamonds;
         UIManager.Instance.UpdateGemUI(_diamonds);
+        UIManager.Instance.OpenShop(DiamondsOnHand());
         //Debug.Log("picked up " + ExtraDiamonds + " diamond");
     }
 

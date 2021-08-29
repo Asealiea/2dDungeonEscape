@@ -6,6 +6,8 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
+  
+
 
     public void ShowRewardedAd()
     {
@@ -34,7 +36,7 @@ public class AdsManager : MonoBehaviour
                 break;
             case ShowResult.Finished:
                 //award diamonds to player
-             
+                GameManager.Instance.Player.UpdateDiamonds(100);
                 break;
             default:
                 break;

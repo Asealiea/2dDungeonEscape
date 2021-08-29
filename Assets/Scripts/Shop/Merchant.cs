@@ -78,7 +78,8 @@ public class Merchant : MonoBehaviour
         if (_player.DiamondsOnHand() >= _itemCost)
         {          
             _player.ShopPurchance(_itemCost,_selectedItem);
-            UIManager.Instance.OpenShop(_player.DiamondsOnHand());        
+            UIManager.Instance.OpenShop(_player.DiamondsOnHand());
+            UIManager.Instance.UpdateGemUI(_player.DiamondsOnHand());
             Debug.Log("You bought " + _itemName);
             if (_selectedItem == 0)  _player.GetComponentInChildren<Attack>().hasFireSword = true;
         }
