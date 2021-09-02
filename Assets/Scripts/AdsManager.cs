@@ -6,7 +6,6 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
-  
 
 
     public void ShowRewardedAd()
@@ -18,7 +17,7 @@ public class AdsManager : MonoBehaviour
             { 
                 resultCallback = HandleShowResults
             };
-
+            
             Advertisement.Show("Rewarded_Android", options);
         }
     }
@@ -28,7 +27,8 @@ public class AdsManager : MonoBehaviour
     {
         switch (result)
         {
-            case ShowResult.Failed:
+        
+            case ShowResult.Failed: 
                 Debug.Log("Video failed, video might not have been ready");
                 break;
             case ShowResult.Skipped:

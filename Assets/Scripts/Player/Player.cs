@@ -5,17 +5,17 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour , IDamageable
 {
-    [SerializeField] private int _diamonds;
 
+    [SerializeField] private int _diamonds;
 
 
     [SerializeField] private Rigidbody2D _rigBody;
     [SerializeField] private float _speed = 3;
     [SerializeField] private int _health = 10;
-    private bool _isDead = false;
     [SerializeField] private float _jump = 5;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private BoxCollider2D _box2D;
+    private bool _isDead = false;
     private PlayerAnimation _playerAnim;
     private bool _inShop = false;
 
@@ -94,16 +94,16 @@ public class Player : MonoBehaviour , IDamageable
 
     public void Damage(int damage)
     {     
-        _playerAnim.PlayerDamage();
-        
+        _playerAnim.PlayerDamage();            
         Health--;   
-        
+        //*
         if (Health < 1)
         {
             _playerAnim.PlayerDeath();
             Health = 0;
             _isDead = true;
         }
+       // */
         UIManager.Instance.UpdateLives(Health);
     }
 
