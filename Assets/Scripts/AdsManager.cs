@@ -7,6 +7,25 @@ using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour
 {
 
+    #region Singleton
+    private static AdsManager _instance;
+    public static AdsManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.LogError("UIManager:: Instance is null");
+            }
+            return _instance;
+        }
+    }
+    private void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
+
 
     public void ShowRewardedAd()
     {
@@ -36,8 +55,8 @@ public class AdsManager : MonoBehaviour
                 break;
             case ShowResult.Finished:
                 //award diamonds to player
-                UIManager.Instance.OpenShop(GameManager.Instance.Player.DiamondsOnHand());
                 GameManager.Instance.Player.UpdateDiamonds(100);
+                UIManager.Instance.OpenShop(GameManager.Instance.Player.DiamondsOnHand());
                 break;
             default:
                 break;

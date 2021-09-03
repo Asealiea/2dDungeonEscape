@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
 
-
+    [SerializeField] private GameObject _adsSelection;
     [SerializeField] private GameObject _shopPanel;
     [SerializeField] private Text _playerGemsText;
     [SerializeField] private Image _selectionImage;
@@ -63,6 +63,17 @@ public class UIManager : MonoBehaviour
         Debug.Log("reume called");
     }
 
+    public void AdsSelected(bool Selected)
+    {
+        if (Selected)
+        {
+            _adsSelection.SetActive(true);
+        }
+        else if (!Selected)
+        {
+            _adsSelection.SetActive(false);
+        }
+    }
 
     public void OpenShop(int gems)
     {

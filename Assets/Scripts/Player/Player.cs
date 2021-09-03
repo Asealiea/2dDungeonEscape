@@ -76,7 +76,7 @@ public class Player : MonoBehaviour , IDamageable
             float h2 = CrossPlatformInputManager.GetAxis("Horizontal"); // Input.GetAxisRaw("Horizontal");
 
             //  if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
-            if ((CrossPlatformInputManager.GetButtonDown("B_Button") || Input.GetAxisRaw("Jump") == 1) && IsGrounded() && !_paused)
+            if ((CrossPlatformInputManager.GetButtonDown("B_Button") || Input.GetAxisRaw("Jump") == 1) && IsGrounded() && !_paused && !_inShop)
             {
                 _rigBody.velocity = new Vector2((h+h2) * _speed, _jump);
                 _playerAnim.Jump();
@@ -137,13 +137,13 @@ public class Player : MonoBehaviour , IDamageable
 
         switch (itemID)
         {
-            case 0:
+            case 1:
                 _playerAnim.FireSword();
                 break;
-            case 1:
+            case 2:
                 _jump *= 1.5f;
                 break;
-            case 2:
+            case 3:
                 GameManager.Instance.hasKeyToCastle = true;
                 break;
             default:

@@ -8,8 +8,111 @@ public class Merchant : MonoBehaviour
     private Player _player;
     private int _itemCost;
     private string _itemName;
+    private bool _shop = false;
+    private int _controllerSelected = 0;
+    private float _timer, _timer2 = 0.085f;
+    private float _adTimer = 0f;
 
 
+    #region Controller Support for shop
+    private void Update()
+    {
+        if (_shop)
+        {
+            if (Input.GetAxis("Vertical") == 1f)
+            {
+                if (_timer2 <= 0)
+                {
+                    PreviousItem();
+                    _timer2 = 0.085f;
+                }
+                else
+                {
+                    _timer2 -= Time.deltaTime;
+                }
+
+            }
+            else if (Input.GetAxis("Vertical") == -1f)
+            {
+                if (_timer <= 0)
+                {
+                    NextItem();
+                    _timer = 0.085f;
+                }
+                else
+                {
+                    _timer -= Time.deltaTime;
+                }
+
+            }
+            if (Input.GetAxisRaw("Submit") == 1)
+            {
+                if (_timer <= 0)
+                {
+                    if (_controllerSelected != 0) // if selected an item and not the ads.
+                    {
+                        BuyItem();
+                        _timer = 0.085f;
+                        _controllerSelected = 0;
+                    }
+                    else
+                    {
+                        if (_adTimer <= 0)
+                        {
+                            AdsManager.Instance.ShowRewardedAd();
+                            _adTimer = 1f;
+                        }
+                        else
+                        {
+                            _adTimer -= Time.deltaTime;
+                        }                       
+                    }
+                }
+                else
+                {
+                    _timer -= Time.deltaTime;
+                }
+            }
+        }            
+    }
+
+    private void NextItem()
+    {
+      //  Debug.Log("you selected the next item");
+        _controllerSelected++;
+        if (_controllerSelected > 0 && _controllerSelected < 4)
+        {
+            SelectItem(_controllerSelected);
+        }
+        if (_controllerSelected >= 4)
+        {
+            _controllerSelected = 1;
+            SelectItem(_controllerSelected);
+            //select the ads.
+        }
+    //    Debug.Log(_controllerSelected);
+    }
+
+    private void PreviousItem()
+    {
+       // Debug.Log("you selected the previous item");
+        _controllerSelected--;
+        if (_controllerSelected > 0 && _controllerSelected < 4)
+        {
+            SelectItem(_controllerSelected);
+        }
+        if (_controllerSelected <= 0)
+        {
+            _controllerSelected = 0;
+            SelectItem(_controllerSelected);
+            //select the ads.
+        }
+    //    Debug.Log(_controllerSelected);
+    }
+
+#endregion
+
+    #region Enter and Exit Shop
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -17,15 +120,13 @@ public class Merchant : MonoBehaviour
             _player = other.GetComponent<Player>();//to this           
             if (_player != null)
             {
+                _shop = true;
+                _controllerSelected = 0;
                 _player.Shop(); //extra method to disbale being able to attack when in the shop
                 UIManager.Instance.OpenShop(_player.DiamondsOnHand());
-            }
-            
+            }            
         }
-    } 
-
-
-
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -33,7 +134,7 @@ public class Merchant : MonoBehaviour
         {
             UIManager.Instance.CloseShop();
             Player player = other.GetComponent<Player>();
-
+            _shop = false;
             if (player != null)
             {
                 player.Shop(); //re-enables attack after exiting shop
@@ -41,25 +142,32 @@ public class Merchant : MonoBehaviour
         }
     }
 
- 
-    
+#endregion
+
+
     public void SelectItem(int itemID)
     {
         _selectedItem = itemID;
         Debug.Log("Selected " + itemID);
         switch (itemID)
         {
-            case 0: //flame Sword
+            case 0: //Ads
+                UIManager.Instance.UpdateSelectionImage(700f);
+                UIManager.Instance.AdsSelected(true);
+                break;
+
+            case 1: //flame Sword
+                UIManager.Instance.AdsSelected(false);
                 UIManager.Instance.UpdateSelectionImage(227f);
                 _itemCost = 200;
                  _itemName = "a Flame Sword";
                 break;
-            case 1://Boots of Flight
+            case 2://Boots of Flight
                 UIManager.Instance.UpdateSelectionImage(118f);
-                _itemCost = 400;
+                _itemCost = 50;
                 _itemName = "the Boots of Flight";
                 break;
-            case 2://key to Castle
+            case 3://key to Castle
                 UIManager.Instance.UpdateSelectionImage(15f);
                 _itemCost = 100;
                  _itemName = "the Key to Castle";
@@ -81,7 +189,7 @@ public class Merchant : MonoBehaviour
             UIManager.Instance.OpenShop(_player.DiamondsOnHand());
             UIManager.Instance.UpdateGemUI(_player.DiamondsOnHand());
             Debug.Log("You bought " + _itemName);
-            if (_selectedItem == 0)  _player.GetComponentInChildren<Attack>().hasFireSword = true;
+            if (_selectedItem == 1)  _player.GetComponentInChildren<Attack>().hasFireSword = true;
         }
         else
         {       
