@@ -18,12 +18,16 @@ public class Player : MonoBehaviour , IDamageable
     private bool _isDead = false;
     private PlayerAnimation _playerAnim;
     private bool _inShop = false;
+    private bool _paused;
 
 
     public int Health { get; set; }
    
     void Start()
     {
+       // QualitySettings.vSyncCount = 0;
+       // Application.targetFrameRate = 30;
+
         _box2D = GetComponent<BoxCollider2D>();
         if (_box2D == null) Debug.LogError("Player:: Box collider is null");
 
@@ -45,16 +49,18 @@ public class Player : MonoBehaviour , IDamageable
 
        // if (Input.GetMouseButtonDown(0) && !_inShop && !_playerAnim.FinishedAttack())
 //        if ((CrossPlatformInputManager.GetButtonDown("A_Button") || Input.GetMouseButtonDown(0)) && !_inShop && !_playerAnim.FinishedAttack())
-        if (CrossPlatformInputManager.GetButtonDown("A_Button") && !_inShop && !_playerAnim.FinishedAttack())
+        if ((CrossPlatformInputManager.GetButtonDown("A_Button") || Input.GetAxis("Attack") == 1) && !_inShop && !_playerAnim.FinishedAttack() && !_paused)
         { 
                 _playerAnim.Attack();
         }
-        if (CrossPlatformInputManager.GetButtonDown("Pause_Button"))
+        if (CrossPlatformInputManager.GetButtonDown("Pause_Button") || (Input.GetAxisRaw("Pause") == 1 && !_paused))
         {
+            _paused = true; 
             UIManager.Instance.PauseGame();
         }
-        if (CrossPlatformInputManager.GetButtonDown("Resume_Button"))
+        if (CrossPlatformInputManager.GetButtonDown("Resume_Button") || (Input.GetAxisRaw("Submit") == 1 && _paused))
         {
+            _paused = false;
             UIManager.Instance.ResumeGame();
         }
         
@@ -64,13 +70,13 @@ public class Player : MonoBehaviour , IDamageable
 
     private void Movement()
     {
-        if (!_isDead)
+        if (!_isDead && !_paused)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float h2 = CrossPlatformInputManager.GetAxis("Horizontal"); // Input.GetAxisRaw("Horizontal");
 
             //  if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() )
-            if ((CrossPlatformInputManager.GetButtonDown("B_Button") || Input.GetKeyDown(KeyCode.Space)) && IsGrounded())
+            if ((CrossPlatformInputManager.GetButtonDown("B_Button") || Input.GetAxisRaw("Jump") == 1) && IsGrounded() && !_paused)
             {
                 _rigBody.velocity = new Vector2((h+h2) * _speed, _jump);
                 _playerAnim.Jump();
@@ -111,9 +117,8 @@ public class Player : MonoBehaviour , IDamageable
     public void UpdateDiamonds(int ExtraDiamonds)
     {
         _diamonds += ExtraDiamonds;
-        UIManager.Instance.UpdateGemUI(_diamonds);
-        UIManager.Instance.OpenShop(DiamondsOnHand());
-        //Debug.Log("picked up " + ExtraDiamonds + " diamond");
+        UIManager.Instance.UpdateGemUI(_diamonds);      
+        //Debug.Log("picked up " + _diamonds + " diamond");
     }
 
     public int DiamondsOnHand()

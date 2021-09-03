@@ -13,7 +13,8 @@ public class PlayerAnimation : MonoBehaviour
     private SpriteRenderer _swordSprite;
 
     private bool _jumpFlipX;
-    private bool _jumpping = false;
+    private bool _attacking = false;
+  
 
 
 
@@ -68,12 +69,13 @@ public class PlayerAnimation : MonoBehaviour
 
     public void AttackEffect()
     {
-        if (!_jumpping)
+        if (!_attacking)
         {
             _swordSprite.transform.rotation = Quaternion.Euler(new Vector3(75.26f, 67.1f, -53.4f));
-            _swordArk.SetTrigger("AttackArc");
+            _swordArk.SetBool("AttackArc",true);
             _swordSprite.flipX = false;
             _swordSprite.flipY = _jumpFlipX;
+            _attacking = true;
         }
     }
 
@@ -83,19 +85,26 @@ public class PlayerAnimation : MonoBehaviour
         _swordSprite.transform.rotation = Quaternion.Euler( new Vector3(75.26f, -67.1f,-53.4f));
         _swordSprite.flipY = true;
         _swordSprite.flipX = _jumpFlipX;
-        _jumpping = true;
+        _attacking = true;
 
     }
 
     public bool FinishedAttack()
     {
-        return _jumpping;
+
+        return _attacking;
+    }
+
+    public void AttackEnd()
+    {
+        _swordArk.SetBool("AttackArc", false);
+        _attacking = false;
     }
 
     public void JumpAttackEnd()
     {
         _swordArk.SetBool("JumpAttackArc", false);
-        _jumpping = false;
+        _attacking = false;
     }
 
     public void PlayerDamage()

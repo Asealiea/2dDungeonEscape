@@ -28,4 +28,6 @@ public class GameManager : MonoBehaviour
 
     public Player Player { get; private set; }
 
+    
+
 }

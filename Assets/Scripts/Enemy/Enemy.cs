@@ -8,7 +8,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected GameObject _diamonds;
     [SerializeField] protected int gems;
     [SerializeField] protected int health;
-    [SerializeField] protected int speed;
+    [SerializeField] protected float speed;
     [SerializeField] protected Transform pointA, pointB;
     protected Animator anim;
     protected SpriteRenderer sprite;

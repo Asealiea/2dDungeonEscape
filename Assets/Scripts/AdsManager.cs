@@ -36,6 +36,7 @@ public class AdsManager : MonoBehaviour
                 break;
             case ShowResult.Finished:
                 //award diamonds to player
+                UIManager.Instance.OpenShop(GameManager.Instance.Player.DiamondsOnHand());
                 GameManager.Instance.Player.UpdateDiamonds(100);
                 break;
             default:
