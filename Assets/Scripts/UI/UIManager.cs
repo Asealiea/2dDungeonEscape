@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text _gemCountUIText;
     [SerializeField] private GameObject _1health, _2health, _3health, _4health;
     [SerializeField] private CanvasGroup _resumeButton, _pauseButton;
+    [SerializeField] private GameObject _alreadyBoughtImage;
 
 
 
@@ -97,6 +98,17 @@ public class UIManager : MonoBehaviour
         _gemCountUIText.text = gems.ToString();
 
     }
+
+    public void MessageOff()
+    {
+        _alreadyBoughtImage.SetActive(false);
+    }
+
+    public void MessageOn()
+    {
+        _alreadyBoughtImage.SetActive(true);
+    }
+
     public void UpdateLives(int lives)
     {
         switch (lives)

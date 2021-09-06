@@ -193,7 +193,7 @@ public class Merchant : MonoBehaviour
         if ((_selectedItem == 1 && _bought1) ||(_selectedItem == 2 && _bought2) ||(_selectedItem == 3 && _bought3))
         {
             Debug.Log("You have alread bought this item");
-            UIManager.Instance.CloseShop();
+            UIManager.Instance.MessageOn();
             return;
         }
         Debug.Log(_itemName);
