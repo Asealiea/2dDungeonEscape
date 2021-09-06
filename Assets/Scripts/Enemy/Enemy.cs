@@ -10,6 +10,12 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected int health;
     [SerializeField] protected float speed;
     [SerializeField] protected Transform pointA, pointB;
+    [Header("Audio")]
+    [SerializeField] protected AudioClip _attack;
+    [SerializeField] protected AudioClip _death;    
+    [SerializeField] protected AudioClip _hit;
+    [SerializeField] protected AudioClip _foodstep;
+
     protected Animator anim;
     protected SpriteRenderer sprite;
     protected Vector3 currentTarget;
@@ -100,6 +106,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         {
             isHit = false;
             anim.SetBool("InCombat", false);
+            
         }
         
         //enables agro if facing the player and less then 1m (still able to sneak up from behind for sneak attacks)
@@ -109,6 +116,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             {
                 isHit = true;
                 anim.SetBool("InCombat", true);
+              
             }
         }
 
@@ -137,11 +145,13 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         Health -= damage;
         anim.SetTrigger("Hit");
         isHit = true;
+        AudioManger.Instance.PlaySfx(_hit);
         anim.SetBool("InCombat", true);
         if (Health < 1)
         {
             isDead = true;
             Health = 0;
+            AudioManger.Instance.PlaySfx(_death);
             anim.SetTrigger("Death");
             GameObject Dia = Instantiate(_diamonds, transform.position, Quaternion.identity);
             Dia.GetComponent<Diamond>().SpawnDiamonds(gems); //private variable  and using a method to change the gems.

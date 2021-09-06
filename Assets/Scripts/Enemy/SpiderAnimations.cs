@@ -18,4 +18,5 @@ public class SpiderAnimations : MonoBehaviour
     {
         _spider.Attack();
     }
+
 }

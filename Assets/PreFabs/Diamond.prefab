@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d7223c0c4865f41bb38ece8e09c34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _diamondsAmount: 1

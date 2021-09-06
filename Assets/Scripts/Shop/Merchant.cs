@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Merchant : MonoBehaviour
 {
-    private int _selectedItem;
-    private Player _player;
-    private int _itemCost;
-    private string _itemName;
-    private bool _shop = false;
-    private int _controllerSelected = 0;
-    private float _timer, _timer2 = 0.085f;
-    private float _adTimer = 0f;
+    [SerializeField] private int _selectedItem;
+    [SerializeField] private Player _player;
+    [SerializeField] private int _itemCost;
+    [SerializeField] private string _itemName;
+    [SerializeField] private bool _shop = false;
+    [SerializeField] private int _controllerSelected = 0;
+    [SerializeField] private float _timer, _timer2 = 0.085f;
+    [SerializeField] private float _adTimer = 0f;
+    [SerializeField] private GameObject _buy;
+    [SerializeField] private GameObject _buyItems;
+    [SerializeField] private bool _bought1, _bought2, _bought3;
 
 
     #region Controller Support for shop
@@ -120,6 +123,8 @@ public class Merchant : MonoBehaviour
             _player = other.GetComponent<Player>();//to this           
             if (_player != null)
             {
+                _buy.SetActive(true);
+                _buyItems.SetActive(true);
                 _shop = true;
                 _controllerSelected = 0;
                 _player.Shop(); //extra method to disbale being able to attack when in the shop
@@ -135,6 +140,8 @@ public class Merchant : MonoBehaviour
             UIManager.Instance.CloseShop();
             Player player = other.GetComponent<Player>();
             _shop = false;
+            _buy.SetActive(false);
+            _buyItems.SetActive(false);
             if (player != null)
             {
                 player.Shop(); //re-enables attack after exiting shop
@@ -166,6 +173,7 @@ public class Merchant : MonoBehaviour
                 UIManager.Instance.UpdateSelectionImage(118f);
                 _itemCost = 50;
                 _itemName = "the Boots of Flight";
+                Debug.Log(_itemName);
                 break;
             case 3://key to Castle
                 UIManager.Instance.UpdateSelectionImage(15f);
@@ -182,7 +190,13 @@ public class Merchant : MonoBehaviour
 
     public void BuyItem()
     {
-       
+        if ((_selectedItem == 1 && _bought1) ||(_selectedItem == 2 && _bought2) ||(_selectedItem == 3 && _bought3))
+        {
+            Debug.Log("You have alread bought this item");
+            UIManager.Instance.CloseShop();
+            return;
+        }
+        Debug.Log(_itemName);
         if (_player.DiamondsOnHand() >= _itemCost)
         {          
             _player.ShopPurchance(_itemCost,_selectedItem);
@@ -190,6 +204,20 @@ public class Merchant : MonoBehaviour
             UIManager.Instance.UpdateGemUI(_player.DiamondsOnHand());
             Debug.Log("You bought " + _itemName);
             if (_selectedItem == 1)  _player.GetComponentInChildren<Attack>().hasFireSword = true;
+            switch (_selectedItem)
+            {
+                case 1:
+                    _bought1 = true;
+                    break;
+                case 2:
+                    _bought2 = true;
+                    break;
+                case 3:
+                    _bought3 = true;
+                    break;
+                default:
+                    break;
+            }
         }
         else
         {       

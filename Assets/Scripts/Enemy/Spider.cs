@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Spider : Enemy//, IDamageable
 {
+    [Header("Projectile")]
     [SerializeField] private GameObject _acid;
+    private SpriteRenderer _rend;
 
    // public int Health { get; set; }
 
@@ -15,6 +17,7 @@ public class Spider : Enemy//, IDamageable
         base.Init();
         Health = base.health;
         if (_acid == null) Debug.LogError(transform.name + ":: No acid PreFab attached");
+        _rend = GetComponentInChildren<SpriteRenderer>();
     }
     /*
     public void Damage(int damage)
@@ -52,11 +55,13 @@ public class Spider : Enemy//, IDamageable
             isDead = true;
             Health = 0;
             anim.SetTrigger("Death");
+            AudioManger.Instance.PlaySfx(_death);
             GameObject Dia = Instantiate(_diamonds, transform.position, Quaternion.identity);
             Dia.GetComponent<Diamond>().SpawnDiamonds(gems);
             Destroy(this.gameObject, 3);
         }
     }
+
     public override void Movement()
     {
         //empty so spider doesn't move.
@@ -64,8 +69,14 @@ public class Spider : Enemy//, IDamageable
 
     public override void Attack()
     {
-        Instantiate(_acid, transform.position, Quaternion.identity);
+        if (_rend.isVisible)
+        {
+            AudioManger.Instance.PlaySfx(_attack);
+            //AudioManger.Instance.PlayAtpoint(_attack, transform);
+            Instantiate(_acid, transform.position, Quaternion.identity);
+        }
     }
+
 
 
 }

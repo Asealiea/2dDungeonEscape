@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Skeleton : Enemy //, IDamageable
 {
-   
+    [SerializeField] private AudioClip _boneBreak;
 
    // public int Health { get; set; }
 

@@ -19,6 +19,21 @@ public class Player : MonoBehaviour , IDamageable
     private PlayerAnimation _playerAnim;
     private bool _inShop = false;
     private bool _paused;
+    [Header("Audio")]
+    [SerializeField] AudioClip _coinPickup;
+    [SerializeField] AudioClip _death;
+    [SerializeField] AudioClip FlamingSwordJump;
+    [SerializeField] AudioClip _healthGain;
+    [SerializeField] AudioClip _hit;
+    [SerializeField] AudioClip _itemCollection;
+    [SerializeField] AudioClip _jumps;
+    [SerializeField] AudioClip _jumpwithSword;
+    [SerializeField] AudioClip _squishyCut;
+    [SerializeField] AudioClip _swingSword;
+    [SerializeField] AudioClip _swingFireSword;
+
+
+
 
 
     public int Health { get; set; }
@@ -99,7 +114,16 @@ public class Player : MonoBehaviour , IDamageable
     }
 
     public void Damage(int damage)
-    {     
+    {
+        if (damage == 10)
+        {
+            _playerAnim.PlayerDeath();
+            Health = 0;
+            _isDead = true;
+            UIManager.Instance.UpdateLives(Health);
+            return;
+        }
+        
         _playerAnim.PlayerDamage();            
         Health--;   
         //*
