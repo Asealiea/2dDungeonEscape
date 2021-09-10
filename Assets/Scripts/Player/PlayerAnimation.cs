@@ -116,9 +116,9 @@ public class PlayerAnimation : MonoBehaviour
         _anim.SetTrigger("Hit");               
     }
 
-    public void PlayerDeath()
+    public void PlayerDeath(bool death)
     {
-        _anim.SetBool("IsDead",true);
+        _anim.SetBool("IsDead",death);
     }
 
     public void FireSword()

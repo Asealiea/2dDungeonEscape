@@ -14,7 +14,7 @@ public class Merchant : MonoBehaviour
     [SerializeField] private float _adTimer = 0f;
     [SerializeField] private GameObject _buy;
     [SerializeField] private GameObject _buyItems;
-    [SerializeField] private bool _bought1, _bought2, _bought3;
+
 
 
     #region Controller Support for shop
@@ -190,7 +190,7 @@ public class Merchant : MonoBehaviour
 
     public void BuyItem()
     {
-        if ((_selectedItem == 1 && _bought1) ||(_selectedItem == 2 && _bought2) ||(_selectedItem == 3 && _bought3))
+        if ((_selectedItem == 1 && GameManager.Instance.hasFlameSword == true) ||(_selectedItem == 2 && GameManager.Instance.hasBootsOfFlight == true) ||(_selectedItem == 3 && GameManager.Instance.hasKeyToCastle == true))
         {
             Debug.Log("You have alread bought this item");
             UIManager.Instance.MessageOn();
@@ -204,20 +204,6 @@ public class Merchant : MonoBehaviour
             UIManager.Instance.UpdateGemUI(_player.DiamondsOnHand());
             Debug.Log("You bought " + _itemName);
             if (_selectedItem == 1)  _player.GetComponentInChildren<Attack>().hasFireSword = true;
-            switch (_selectedItem)
-            {
-                case 1:
-                    _bought1 = true;
-                    break;
-                case 2:
-                    _bought2 = true;
-                    break;
-                case 3:
-                    _bought3 = true;
-                    break;
-                default:
-                    break;
-            }
         }
         else
         {       

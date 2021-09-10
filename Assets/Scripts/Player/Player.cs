@@ -31,6 +31,8 @@ public class Player : MonoBehaviour , IDamageable
     [SerializeField] AudioClip _squishyCut;
     [SerializeField] AudioClip _swingSword;
     [SerializeField] AudioClip _swingFireSword;
+    [SerializeField] Transform _spawnPoint;
+    [SerializeField] int _lives = 4;
 
 
 
@@ -78,6 +80,13 @@ public class Player : MonoBehaviour , IDamageable
             _paused = false;
             UIManager.Instance.ResumeGame();
         }
+
+
+        //for testing the checkpoints
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            CheckPoint();
+        }
         
         
     } 
@@ -117,10 +126,15 @@ public class Player : MonoBehaviour , IDamageable
     {
         if (damage == 10)
         {
-            _playerAnim.PlayerDeath();
+            _playerAnim.PlayerDeath(true);
             Health = 0;
             _isDead = true;
             UIManager.Instance.UpdateLives(Health);
+            if (_lives < 1)
+            {
+                UIManager.Instance.RestartFromCheckPoint();
+
+            }
             return;
         }
         
@@ -129,12 +143,37 @@ public class Player : MonoBehaviour , IDamageable
         //*
         if (Health < 1)
         {
-            _playerAnim.PlayerDeath();
+            _playerAnim.PlayerDeath(true);
             Health = 0;
             _isDead = true;
+            
+            if (_lives > 1)
+            {
+                UIManager.Instance.RestartFromCheckPoint();
+            }
         }
        // */
         UIManager.Instance.UpdateLives(Health);
+    }
+
+    public void CheckPoint()
+    {
+        //UIManager.Instance.RestartFromCheckPoint();
+        //show UI for the restart to checkpoint.
+        //take away a life.
+        _lives--;
+        //take away death status
+        _isDead = false;
+        Health = 4;
+        transform.position = _spawnPoint.position;
+        UIManager.Instance.UpdateLives(Health);
+        _playerAnim.PlayerDeath(false);
+
+    }
+
+    public void CheckPoint(Transform trans)
+    {
+        _spawnPoint = trans;
     }
 
 
@@ -163,9 +202,11 @@ public class Player : MonoBehaviour , IDamageable
         {
             case 1:
                 _playerAnim.FireSword();
+                GameManager.Instance.hasFlameSword = true;
                 break;
             case 2:
                 _jump *= 1.5f;
+                GameManager.Instance.hasBootsOfFlight = true;
                 break;
             case 3:
                 GameManager.Instance.hasKeyToCastle = true;

@@ -109,6 +109,10 @@ public class UIManager : MonoBehaviour
         _alreadyBoughtImage.SetActive(true);
     }
 
+    public void RestartFromCheckPoint()
+    {
+
+    }
     public void UpdateLives(int lives)
     {
         switch (lives)

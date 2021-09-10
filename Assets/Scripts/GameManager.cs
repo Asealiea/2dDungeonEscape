@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public Player Player { get; private set; }
 
-    
+    public bool hasFlameSword { get; set; }
+    public bool hasBootsOfFlight { get; set; }
 
 }
